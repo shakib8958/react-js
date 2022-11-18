@@ -1,0 +1,42 @@
+
+*{
+    background-color: white;
+}
+    ul{
+    list-style-type: none;
+    list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+    
+}
+a{
+    text-decoration: none;
+    color: aqua;
+    color: blueviolet;
+    
+}
+
+li{
+    background-color: white;
+    width: 5%;
+    margin-top: 3px;
+    padding: 2px;
+    float: right;
+    
+    
+}
+li a {
+    display: block;
+    padding: 2px;
+    background-color: #dddddd;
+}
+li:hover{
+    background-color: cadetblue;
+
+
+}
+.active{
+    border-bottom: 2px solid blue;
+
+}
