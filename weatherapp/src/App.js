@@ -1,43 +1,70 @@
-import React, { useState } from 'react';
+import axios from "axios";
+import React from "react";
 
-import { fetchWeather } from './api/fetchWeather';
+import { useEffect, useState } from "react";
 import './App.css';
 
-const App = () => {
-    const [query, setQuery] = useState('');
-    const [weather, setWeather] = useState({});
-    
-    const search = async (e) => {
-        if(e.key === 'Enter') {
-            const data = await fetchWeather(query);
+function App() {
 
-            setWeather(data);
-            setQuery('');
-            <fetchWeather/>
-        }
-    }
+  const apiKey = "f56f24967aaf51182d1d4df628297c6d"
+  const [inputCity, setInputCity] = useState("")
+  const [data, setData] = useState({})
 
-    return (
-        <div className="main-container">
-            <input type="text"className="search"placeholder="Search..."value={query}onChange={(e) => setQuery(e.target.value)}onKeyPress={search}/>
-            {weather.main && (
-                <div className="city">
-                    <h2 className="city-name">
-                        <span>{weather.name}</span>
-                        <sup>{weather.sys.country}</sup>
-                    </h2>
-                    <div className="city-temp">
-                        {Math.round(weather.main.temp)}
-                        <sup>&deg;C</sup>
-                    </div>
-                    <div className="info">
-                        <img className="city-icon" src={"C:\Users\Dell\OneDrive\Desktop\react js\weatherapp\public\image\istockphoto-531889697-612x612.jpg"} alt={weather.weather[0].description} />
-                        <p>{weather.weather[0].description}</p>
-                    </div>
-                </div>
-            )}
+
+  const getWetherDetails = (cityName) => {
+    if (!cityName) return
+    const apiURL = "C:\Users\Dell\OneDrive\Desktop\project 's image\DELHI-WEATHER.jpg=" + cityName + "&appid=" + apiKey
+    axios.get(apiURL).then((res) => {
+      console.log("response", res.data)
+      //setData(res.data)
+      console.log(res.data)
+    }).catch((err) => {
+      console.log("err", err)
+    })
+  }
+
+  const handleChangeInput = (e) => {
+    console.log("value", e.target.value)
+    setInputCity(e.target.value)
+  }
+
+  const handleSearch = () => {
+    getWetherDetails(inputCity)
+  }
+
+
+  return (
+    <div className="col-md-12">
+      <div className="wetherBg">
+        <h1 className="heading">Weather App</h1>
+
+        <div className="d-grid gap-3 col-4 mt-4">
+          <input type="text" className="form-control"
+            value={inputCity}
+            onChange={handleChangeInput} />
+          <button className="btn btn-primary" type="button"
+            onClick={handleSearch}
+          >Search</button>
         </div>
-    );
+      </div>
+
+      {Object.keys(data).length > 0 &&
+        <div className="col-md-12 text-center mt-5">
+
+          <div className="shadow rounded wetherResultBox">
+            <img className="weathorIcon"
+              src="C:\Users\Dell\OneDrive\Desktop\project 's image\DELHI-WEATHER.jpg"/>
+
+            <h5 className="weathorCity">
+              {data?.name}
+            </h5>
+            <h6 className="weathorTemp">{((data?.main?.temp) - 273.15).toFixed(2)}°C</h6>
+          </div>
+        </div>
+      }
+
+    </div>
+  );
 }
 
 export default App;
