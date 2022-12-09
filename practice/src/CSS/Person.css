@@ -1,0 +1,9 @@
+.header{
+    text-align: center;
+    flex-direction: column;
+    background-color: brown;
+    float: left;
+}
+:hover{
+    scroll-behavior: auto;
+}

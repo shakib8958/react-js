@@ -8,25 +8,25 @@ export default class Quiz extends Component {
     // initiating the local state
     state = {
         quiestions: {
-            1: 'What US city is known as the "birthplace of jazz"?',
-            2: 'What is the capital of Greece?',
-            3: 'What planet gave birth to Superman?'
+            1: 'What is react js?"?',
+            2: 'how many types of component in react js?',
+            3: 'What is npm in react js?'
         },
         answers: {
             1: {
-                1: 'Chicago',
-                2: 'New Orleans',
-                3: 'New York'
+                1: 'framework',
+                2: 'librairy',
+                3: 'both'
             },
             2: {
-                1: 'Athens',
-                2: 'Patras',
-                3: 'Kalamata'
+                1: '2',
+                2: '3',
+                3: '1'
             },
             3: {
-                1: 'Krypton',
-                2: 'Mars',
-                3: 'Saturn'
+                1: 'package manager',
+                2: 'class component',
+                3: 'function component'
             }
         },
         correctAnswers: {
