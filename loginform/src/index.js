@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 
-import FormExample from './FormExample';
+
+import FillForm from './FillForm';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   
   
-    <FormExample/>
+    <>
+    
+    <FillForm/>
+    </>
   
 );
